@@ -35,9 +35,9 @@ exports.create = (req, res) => {
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
   const communityId = req.query.communityId;
-  var condition = communityId ? { communityId: { $regex: new RegExp(communityId), $options: "i" } } : {};
+  // var condition = communityId ? { communityId: { $regex: new RegExp(communityId), $options: "i" } } : {};
 
-  Chatting.find(condition)
+  Chatting.find({ communityId: communityId })
     .then(data => {
       res.send(data);
     })
