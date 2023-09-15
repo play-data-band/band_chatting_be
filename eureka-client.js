@@ -7,7 +7,7 @@ const client = new Eureka({
   instance: {
     app: 'CHATTING-SERVICE',
     hostName: 'localhost',
-    ipAddr: '	192.168.0.253',
+    ipAddr: '	192.168.0.215',
     statusPageUrl: 'http://localhost:8080/info',
     healthCheckUrl: 'http://localhost:8080/health',
     port: {

@@ -75,7 +75,7 @@ exports.delete = (req, res) => {
 };
 
 exports.updateMemberFields = (req, res) => {
-  const memberId = req.params.memberid; // URL에서 memberId 가져오기
+  const memberId = req.params.id; // URL에서 memberId 가져오기
 
   const updateFields = {
     memberName: req.body.memberName,
@@ -91,7 +91,7 @@ exports.updateMemberFields = (req, res) => {
         });
       } else {
         res.send({
-          message: "Member fields were updated successfully!"
+          message: `Member fields were updated successfully!=${memberId}`
         });
       }
     })
