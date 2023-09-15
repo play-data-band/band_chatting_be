@@ -73,3 +73,31 @@ exports.delete = (req, res) => {
       });
     });
 };
+
+exports.updateMemberFields = (req, res) => {
+  const memberId = req.params.memberid; // URL에서 memberId 가져오기
+
+  const updateFields = {
+    memberName: req.body.memberName,
+    memberImage: req.body.memberImage
+  };
+
+  Chatting.updateMany({ memberId: memberId }, updateFields)
+    .then(data => {
+      if (data.nModified === 0) {
+        // 업데이트된 문서가 없는 경우
+        res.status(404).send({
+          message: `No documents matched the memberId=${memberId}.`
+        });
+      } else {
+        res.send({
+          message: "Member fields were updated successfully!"
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not update member fields."
+      });
+    });
+};
